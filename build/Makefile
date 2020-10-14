@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/wei/workspace/NetWorkLab/GoBackN
+CMAKE_SOURCE_DIR = /home/wei/workspace/NetWorkLab/RdtLab
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/wei/workspace/NetWorkLab/GoBackN/build
+CMAKE_BINARY_DIR = /home/wei/workspace/NetWorkLab/RdtLab/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/wei/workspace/NetWorkLab/GoBackN/build/CMakeFiles /home/wei/workspace/NetWorkLab/GoBackN/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wei/workspace/NetWorkLab/RdtLab/build/CMakeFiles /home/wei/workspace/NetWorkLab/RdtLab/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/wei/workspace/NetWorkLab/GoBackN/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wei/workspace/NetWorkLab/RdtLab/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,140 +123,86 @@ stop_wait/fast:
 	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/build
 .PHONY : stop_wait/fast
 
-src/GBMRdtReceiver.o: src/GBMRdtReceiver.cpp.o
+src/SW/StopWait.o: src/SW/StopWait.cpp.o
 
-.PHONY : src/GBMRdtReceiver.o
-
-# target to build an object file
-src/GBMRdtReceiver.cpp.o:
-	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/GBMRdtReceiver.cpp.o
-.PHONY : src/GBMRdtReceiver.cpp.o
-
-src/GBMRdtReceiver.i: src/GBMRdtReceiver.cpp.i
-
-.PHONY : src/GBMRdtReceiver.i
-
-# target to preprocess a source file
-src/GBMRdtReceiver.cpp.i:
-	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/GBMRdtReceiver.cpp.i
-.PHONY : src/GBMRdtReceiver.cpp.i
-
-src/GBMRdtReceiver.s: src/GBMRdtReceiver.cpp.s
-
-.PHONY : src/GBMRdtReceiver.s
-
-# target to generate assembly for a file
-src/GBMRdtReceiver.cpp.s:
-	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/GBMRdtReceiver.cpp.s
-.PHONY : src/GBMRdtReceiver.cpp.s
-
-src/GBN.o: src/GBN.cpp.o
-
-.PHONY : src/GBN.o
+.PHONY : src/SW/StopWait.o
 
 # target to build an object file
-src/GBN.cpp.o:
-	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/GBN.cpp.o
-.PHONY : src/GBN.cpp.o
+src/SW/StopWait.cpp.o:
+	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/SW/StopWait.cpp.o
+.PHONY : src/SW/StopWait.cpp.o
 
-src/GBN.i: src/GBN.cpp.i
+src/SW/StopWait.i: src/SW/StopWait.cpp.i
 
-.PHONY : src/GBN.i
+.PHONY : src/SW/StopWait.i
 
 # target to preprocess a source file
-src/GBN.cpp.i:
-	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/GBN.cpp.i
-.PHONY : src/GBN.cpp.i
+src/SW/StopWait.cpp.i:
+	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/SW/StopWait.cpp.i
+.PHONY : src/SW/StopWait.cpp.i
 
-src/GBN.s: src/GBN.cpp.s
+src/SW/StopWait.s: src/SW/StopWait.cpp.s
 
-.PHONY : src/GBN.s
+.PHONY : src/SW/StopWait.s
 
 # target to generate assembly for a file
-src/GBN.cpp.s:
-	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/GBN.cpp.s
-.PHONY : src/GBN.cpp.s
+src/SW/StopWait.cpp.s:
+	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/SW/StopWait.cpp.s
+.PHONY : src/SW/StopWait.cpp.s
 
-src/GBNRdtSender.o: src/GBNRdtSender.cpp.o
+src/SW/StopWaitRdtReceiver.o: src/SW/StopWaitRdtReceiver.cpp.o
 
-.PHONY : src/GBNRdtSender.o
+.PHONY : src/SW/StopWaitRdtReceiver.o
 
 # target to build an object file
-src/GBNRdtSender.cpp.o:
-	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/GBNRdtSender.cpp.o
-.PHONY : src/GBNRdtSender.cpp.o
+src/SW/StopWaitRdtReceiver.cpp.o:
+	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/SW/StopWaitRdtReceiver.cpp.o
+.PHONY : src/SW/StopWaitRdtReceiver.cpp.o
 
-src/GBNRdtSender.i: src/GBNRdtSender.cpp.i
+src/SW/StopWaitRdtReceiver.i: src/SW/StopWaitRdtReceiver.cpp.i
 
-.PHONY : src/GBNRdtSender.i
+.PHONY : src/SW/StopWaitRdtReceiver.i
 
 # target to preprocess a source file
-src/GBNRdtSender.cpp.i:
-	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/GBNRdtSender.cpp.i
-.PHONY : src/GBNRdtSender.cpp.i
+src/SW/StopWaitRdtReceiver.cpp.i:
+	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/SW/StopWaitRdtReceiver.cpp.i
+.PHONY : src/SW/StopWaitRdtReceiver.cpp.i
 
-src/GBNRdtSender.s: src/GBNRdtSender.cpp.s
+src/SW/StopWaitRdtReceiver.s: src/SW/StopWaitRdtReceiver.cpp.s
 
-.PHONY : src/GBNRdtSender.s
+.PHONY : src/SW/StopWaitRdtReceiver.s
 
 # target to generate assembly for a file
-src/GBNRdtSender.cpp.s:
-	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/GBNRdtSender.cpp.s
-.PHONY : src/GBNRdtSender.cpp.s
+src/SW/StopWaitRdtReceiver.cpp.s:
+	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/SW/StopWaitRdtReceiver.cpp.s
+.PHONY : src/SW/StopWaitRdtReceiver.cpp.s
 
-src/StopWaitRdtReceiver.o: src/StopWaitRdtReceiver.cpp.o
+src/SW/StopWaitRdtSender.o: src/SW/StopWaitRdtSender.cpp.o
 
-.PHONY : src/StopWaitRdtReceiver.o
+.PHONY : src/SW/StopWaitRdtSender.o
 
 # target to build an object file
-src/StopWaitRdtReceiver.cpp.o:
-	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/StopWaitRdtReceiver.cpp.o
-.PHONY : src/StopWaitRdtReceiver.cpp.o
+src/SW/StopWaitRdtSender.cpp.o:
+	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/SW/StopWaitRdtSender.cpp.o
+.PHONY : src/SW/StopWaitRdtSender.cpp.o
 
-src/StopWaitRdtReceiver.i: src/StopWaitRdtReceiver.cpp.i
+src/SW/StopWaitRdtSender.i: src/SW/StopWaitRdtSender.cpp.i
 
-.PHONY : src/StopWaitRdtReceiver.i
-
-# target to preprocess a source file
-src/StopWaitRdtReceiver.cpp.i:
-	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/StopWaitRdtReceiver.cpp.i
-.PHONY : src/StopWaitRdtReceiver.cpp.i
-
-src/StopWaitRdtReceiver.s: src/StopWaitRdtReceiver.cpp.s
-
-.PHONY : src/StopWaitRdtReceiver.s
-
-# target to generate assembly for a file
-src/StopWaitRdtReceiver.cpp.s:
-	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/StopWaitRdtReceiver.cpp.s
-.PHONY : src/StopWaitRdtReceiver.cpp.s
-
-src/StopWaitRdtSender.o: src/StopWaitRdtSender.cpp.o
-
-.PHONY : src/StopWaitRdtSender.o
-
-# target to build an object file
-src/StopWaitRdtSender.cpp.o:
-	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/StopWaitRdtSender.cpp.o
-.PHONY : src/StopWaitRdtSender.cpp.o
-
-src/StopWaitRdtSender.i: src/StopWaitRdtSender.cpp.i
-
-.PHONY : src/StopWaitRdtSender.i
+.PHONY : src/SW/StopWaitRdtSender.i
 
 # target to preprocess a source file
-src/StopWaitRdtSender.cpp.i:
-	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/StopWaitRdtSender.cpp.i
-.PHONY : src/StopWaitRdtSender.cpp.i
+src/SW/StopWaitRdtSender.cpp.i:
+	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/SW/StopWaitRdtSender.cpp.i
+.PHONY : src/SW/StopWaitRdtSender.cpp.i
 
-src/StopWaitRdtSender.s: src/StopWaitRdtSender.cpp.s
+src/SW/StopWaitRdtSender.s: src/SW/StopWaitRdtSender.cpp.s
 
-.PHONY : src/StopWaitRdtSender.s
+.PHONY : src/SW/StopWaitRdtSender.s
 
 # target to generate assembly for a file
-src/StopWaitRdtSender.cpp.s:
-	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/StopWaitRdtSender.cpp.s
-.PHONY : src/StopWaitRdtSender.cpp.s
+src/SW/StopWaitRdtSender.cpp.s:
+	$(MAKE) -f CMakeFiles/stop_wait.dir/build.make CMakeFiles/stop_wait.dir/src/SW/StopWaitRdtSender.cpp.s
+.PHONY : src/SW/StopWaitRdtSender.cpp.s
 
 # Help Target
 help:
@@ -267,21 +213,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... stop_wait"
 	@echo "... edit_cache"
-	@echo "... src/GBMRdtReceiver.o"
-	@echo "... src/GBMRdtReceiver.i"
-	@echo "... src/GBMRdtReceiver.s"
-	@echo "... src/GBN.o"
-	@echo "... src/GBN.i"
-	@echo "... src/GBN.s"
-	@echo "... src/GBNRdtSender.o"
-	@echo "... src/GBNRdtSender.i"
-	@echo "... src/GBNRdtSender.s"
-	@echo "... src/StopWaitRdtReceiver.o"
-	@echo "... src/StopWaitRdtReceiver.i"
-	@echo "... src/StopWaitRdtReceiver.s"
-	@echo "... src/StopWaitRdtSender.o"
-	@echo "... src/StopWaitRdtSender.i"
-	@echo "... src/StopWaitRdtSender.s"
+	@echo "... src/SW/StopWait.o"
+	@echo "... src/SW/StopWait.i"
+	@echo "... src/SW/StopWait.s"
+	@echo "... src/SW/StopWaitRdtReceiver.o"
+	@echo "... src/SW/StopWaitRdtReceiver.i"
+	@echo "... src/SW/StopWaitRdtReceiver.s"
+	@echo "... src/SW/StopWaitRdtSender.o"
+	@echo "... src/SW/StopWaitRdtSender.i"
+	@echo "... src/SW/StopWaitRdtSender.s"
 .PHONY : help
 
 

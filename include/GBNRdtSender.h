@@ -7,10 +7,10 @@
 using std::shared_ptr;
 class GBNRdtSender : public RdtSender {
   private:
-    int winSize{SEQ_LEN / 2};                                     // 窗口大小
-    int seqLength{SEQ_LEN};                                   // 序列长度
-    int base{0};                                        // 窗口的base, 其值为[0, Length) 中的整数
-    int nextSeqNum{0};                                  // 窗口的下一个可用packet的序号
+    int winSize{SEQ_LEN / 2};                        // 窗口大小
+    int seqLength{SEQ_LEN};                          // 序列长度
+    int base{0};                                     // 窗口的base, 其值为[0, Length) 中的整数
+    int nextSeqNum{0};                               // 窗口的下一个可用packet的序号
     std::queue<shared_ptr<Packet>> packetWaitingAck; // 已发送并等待Ack的数据包
 
   public:

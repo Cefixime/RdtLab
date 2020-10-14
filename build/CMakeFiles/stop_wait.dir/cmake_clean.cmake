@@ -1,9 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/stop_wait.dir/src/GBMRdtReceiver.cpp.o"
-  "CMakeFiles/stop_wait.dir/src/GBN.cpp.o"
-  "CMakeFiles/stop_wait.dir/src/GBNRdtSender.cpp.o"
-  "CMakeFiles/stop_wait.dir/src/StopWaitRdtReceiver.cpp.o"
-  "CMakeFiles/stop_wait.dir/src/StopWaitRdtSender.cpp.o"
+  "CMakeFiles/stop_wait.dir/src/SW/StopWait.cpp.o"
+  "CMakeFiles/stop_wait.dir/src/SW/StopWaitRdtReceiver.cpp.o"
+  "CMakeFiles/stop_wait.dir/src/SW/StopWaitRdtSender.cpp.o"
   "../bin/stop_wait.pdb"
   "../bin/stop_wait"
 )
