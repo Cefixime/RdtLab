@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=c++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/wei/workspace/NetWorkLab/GoBackN/include 
+CXX_INCLUDES = -I/home/wei/workspace/NetWorkLab/RdtLab/include 
 

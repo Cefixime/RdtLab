@@ -4,11 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/wei/workspace/NetWorkLab/GoBackN/src/GBMRdtReceiver.cpp" "/home/wei/workspace/NetWorkLab/GoBackN/build/CMakeFiles/stop_wait.dir/src/GBMRdtReceiver.cpp.o"
-  "/home/wei/workspace/NetWorkLab/GoBackN/src/GBN.cpp" "/home/wei/workspace/NetWorkLab/GoBackN/build/CMakeFiles/stop_wait.dir/src/GBN.cpp.o"
-  "/home/wei/workspace/NetWorkLab/GoBackN/src/GBNRdtSender.cpp" "/home/wei/workspace/NetWorkLab/GoBackN/build/CMakeFiles/stop_wait.dir/src/GBNRdtSender.cpp.o"
-  "/home/wei/workspace/NetWorkLab/GoBackN/src/StopWaitRdtReceiver.cpp" "/home/wei/workspace/NetWorkLab/GoBackN/build/CMakeFiles/stop_wait.dir/src/StopWaitRdtReceiver.cpp.o"
-  "/home/wei/workspace/NetWorkLab/GoBackN/src/StopWaitRdtSender.cpp" "/home/wei/workspace/NetWorkLab/GoBackN/build/CMakeFiles/stop_wait.dir/src/StopWaitRdtSender.cpp.o"
+  "/home/wei/workspace/NetWorkLab/RdtLab/src/SW/StopWait.cpp" "/home/wei/workspace/NetWorkLab/RdtLab/build/CMakeFiles/stop_wait.dir/src/SW/StopWait.cpp.o"
+  "/home/wei/workspace/NetWorkLab/RdtLab/src/SW/StopWaitRdtReceiver.cpp" "/home/wei/workspace/NetWorkLab/RdtLab/build/CMakeFiles/stop_wait.dir/src/SW/StopWaitRdtReceiver.cpp.o"
+  "/home/wei/workspace/NetWorkLab/RdtLab/src/SW/StopWaitRdtSender.cpp" "/home/wei/workspace/NetWorkLab/RdtLab/build/CMakeFiles/stop_wait.dir/src/SW/StopWaitRdtSender.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

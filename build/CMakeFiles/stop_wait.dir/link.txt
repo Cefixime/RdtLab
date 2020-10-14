@@ -1,1 +1,1 @@
-/usr/bin/g++-7  -g   CMakeFiles/stop_wait.dir/src/GBMRdtReceiver.cpp.o CMakeFiles/stop_wait.dir/src/GBN.cpp.o CMakeFiles/stop_wait.dir/src/GBNRdtSender.cpp.o CMakeFiles/stop_wait.dir/src/StopWaitRdtReceiver.cpp.o CMakeFiles/stop_wait.dir/src/StopWaitRdtSender.cpp.o  -o ../bin/stop_wait ../lib/libnetsim.a 
+/usr/bin/g++-7  -g   CMakeFiles/stop_wait.dir/src/SW/StopWait.cpp.o CMakeFiles/stop_wait.dir/src/SW/StopWaitRdtReceiver.cpp.o CMakeFiles/stop_wait.dir/src/SW/StopWaitRdtSender.cpp.o  -o ../bin/stop_wait ../lib/libnetsim.a 

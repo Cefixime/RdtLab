@@ -1,27 +1,17 @@
 [
 {
-  "directory": "/home/wei/workspace/NetWorkLab/GoBackN/build",
-  "command": "/usr/bin/g++-7   -I/home/wei/workspace/NetWorkLab/GoBackN/include  -g   -std=c++11 -o CMakeFiles/stop_wait.dir/src/GBMRdtReceiver.cpp.o -c /home/wei/workspace/NetWorkLab/GoBackN/src/GBMRdtReceiver.cpp",
-  "file": "/home/wei/workspace/NetWorkLab/GoBackN/src/GBMRdtReceiver.cpp"
+  "directory": "/home/wei/workspace/NetWorkLab/RdtLab/build",
+  "command": "/usr/bin/g++-7   -I/home/wei/workspace/NetWorkLab/RdtLab/include  -g   -std=c++11 -o CMakeFiles/stop_wait.dir/src/SW/StopWait.cpp.o -c /home/wei/workspace/NetWorkLab/RdtLab/src/SW/StopWait.cpp",
+  "file": "/home/wei/workspace/NetWorkLab/RdtLab/src/SW/StopWait.cpp"
 },
 {
-  "directory": "/home/wei/workspace/NetWorkLab/GoBackN/build",
-  "command": "/usr/bin/g++-7   -I/home/wei/workspace/NetWorkLab/GoBackN/include  -g   -std=c++11 -o CMakeFiles/stop_wait.dir/src/GBN.cpp.o -c /home/wei/workspace/NetWorkLab/GoBackN/src/GBN.cpp",
-  "file": "/home/wei/workspace/NetWorkLab/GoBackN/src/GBN.cpp"
+  "directory": "/home/wei/workspace/NetWorkLab/RdtLab/build",
+  "command": "/usr/bin/g++-7   -I/home/wei/workspace/NetWorkLab/RdtLab/include  -g   -std=c++11 -o CMakeFiles/stop_wait.dir/src/SW/StopWaitRdtReceiver.cpp.o -c /home/wei/workspace/NetWorkLab/RdtLab/src/SW/StopWaitRdtReceiver.cpp",
+  "file": "/home/wei/workspace/NetWorkLab/RdtLab/src/SW/StopWaitRdtReceiver.cpp"
 },
 {
-  "directory": "/home/wei/workspace/NetWorkLab/GoBackN/build",
-  "command": "/usr/bin/g++-7   -I/home/wei/workspace/NetWorkLab/GoBackN/include  -g   -std=c++11 -o CMakeFiles/stop_wait.dir/src/GBNRdtSender.cpp.o -c /home/wei/workspace/NetWorkLab/GoBackN/src/GBNRdtSender.cpp",
-  "file": "/home/wei/workspace/NetWorkLab/GoBackN/src/GBNRdtSender.cpp"
-},
-{
-  "directory": "/home/wei/workspace/NetWorkLab/GoBackN/build",
-  "command": "/usr/bin/g++-7   -I/home/wei/workspace/NetWorkLab/GoBackN/include  -g   -std=c++11 -o CMakeFiles/stop_wait.dir/src/StopWaitRdtReceiver.cpp.o -c /home/wei/workspace/NetWorkLab/GoBackN/src/StopWaitRdtReceiver.cpp",
-  "file": "/home/wei/workspace/NetWorkLab/GoBackN/src/StopWaitRdtReceiver.cpp"
-},
-{
-  "directory": "/home/wei/workspace/NetWorkLab/GoBackN/build",
-  "command": "/usr/bin/g++-7   -I/home/wei/workspace/NetWorkLab/GoBackN/include  -g   -std=c++11 -o CMakeFiles/stop_wait.dir/src/StopWaitRdtSender.cpp.o -c /home/wei/workspace/NetWorkLab/GoBackN/src/StopWaitRdtSender.cpp",
-  "file": "/home/wei/workspace/NetWorkLab/GoBackN/src/StopWaitRdtSender.cpp"
+  "directory": "/home/wei/workspace/NetWorkLab/RdtLab/build",
+  "command": "/usr/bin/g++-7   -I/home/wei/workspace/NetWorkLab/RdtLab/include  -g   -std=c++11 -o CMakeFiles/stop_wait.dir/src/SW/StopWaitRdtSender.cpp.o -c /home/wei/workspace/NetWorkLab/RdtLab/src/SW/StopWaitRdtSender.cpp",
+  "file": "/home/wei/workspace/NetWorkLab/RdtLab/src/SW/StopWaitRdtSender.cpp"
 }
 ]
