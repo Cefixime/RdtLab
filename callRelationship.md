@@ -27,6 +27,8 @@
     - API startTimer
 2. 否则什么也不做
 
+3. 判断是否传输结束
+    - API stopTimer
 ### timeoutHandler
 1. 计时器更新
     - API stopTimer

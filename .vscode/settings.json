@@ -41,5 +41,4 @@
         "streambuf": "cpp",
         "typeinfo": "cpp"
     },
-    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
 }
