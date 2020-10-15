@@ -4,11 +4,11 @@
 using namespace std;
 
 GBNRdtReceiver::GBNRdtReceiver() : expectSequenceNumberRcvd(0), seqLen(SEQ_LEN) {
-  lastAckPkt = make_shared<Packet>(makePacket(7));
+  lastAckPkt = makePacket(7);
 }
 
-Packet *GBNRdtReceiver::makePacket(int seqNum) {
-  auto pkt = new Packet();
+shared_ptr<Packet> GBNRdtReceiver::makePacket(int seqNum) {
+  shared_ptr<Packet> pkt = make_shared<Packet>();
   pkt->acknum = seqNum;
   pkt->seqnum = -1;
   for (int i = 0; i < Configuration::PAYLOAD_SIZE; i++) {
@@ -26,7 +26,7 @@ void GBNRdtReceiver::receive(const Packet &packet) {
     Message msg;
     memcpy(msg.data, packet.payload, sizeof(packet.payload));
     pns->delivertoAppLayer(RECEIVER, msg);
-    lastAckPkt = make_shared<Packet>(makePacket(expectSequenceNumberRcvd));
+    lastAckPkt = makePacket(expectSequenceNumberRcvd);
     pUtils->printPacket("接收方发送确认报文", *lastAckPkt);
     //调用模拟网络环境的sendToNetworkLayer，通过网络层发送确认报文到对方
     pns->sendToNetworkLayer(SENDER, *lastAckPkt);

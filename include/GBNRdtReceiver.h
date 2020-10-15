@@ -11,7 +11,7 @@ private:
   int seqLen;
 
 private:
-  Packet *makePacket(int seqNum); // 制作Ack包
+  shared_ptr<Packet> makePacket(int seqNum); // 制作Ack包
 
 public:
   GBNRdtReceiver();

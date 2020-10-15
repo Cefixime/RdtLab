@@ -23,7 +23,7 @@ public:
   void timeoutHandler(int seqNum) override;    // Timeout handler，将被NetworkServiceSimulator调用
 
 private:
-  Packet *makePacket(const Message &message); // 制作数据包
+  shared_ptr<Packet> makePacket(const Message &message); // 制作数据包
   void slideWindow(const Packet &ackPkt);     // 滑动窗口
   int orderMapping(int seqNum);               // 将 “模Length” 的序号转化为相对base的正向偏移
   void goBackN();                             // 重发所有已发送，等待Ack的数据包
@@ -31,6 +31,7 @@ private:
 
 public:
   void setSeqNum(int len);
+  void printSlideWindow() const;  // 输出滑动窗口的内容
   GBNRdtSender() = default;
   ~GBNRdtSender() = default;
 };
