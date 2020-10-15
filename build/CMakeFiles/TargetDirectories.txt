@@ -1,6 +1,0 @@
-/home/wei/workspace/NetWorkLab/RdtLab/build/CMakeFiles/rebuild_cache.dir
-/home/wei/workspace/NetWorkLab/RdtLab/build/CMakeFiles/edit_cache.dir
-/home/wei/workspace/NetWorkLab/RdtLab/build/CMakeFiles/package_source.dir
-/home/wei/workspace/NetWorkLab/RdtLab/build/CMakeFiles/package.dir
-/home/wei/workspace/NetWorkLab/RdtLab/build/CMakeFiles/stop_wait.dir
-/home/wei/workspace/NetWorkLab/RdtLab/build/CMakeFiles/gbn.dir
