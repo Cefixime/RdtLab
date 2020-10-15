@@ -129,7 +129,7 @@ CMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=StopWait
+CMAKE_PROJECT_NAME:STATIC=RdtLab
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -184,10 +184,10 @@ CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 NETSIM_LIB:FILEPATH=/home/wei/workspace/NetWorkLab/RdtLab/lib/libnetsim.a
 
 //Value Computed by CMake
-StopWait_BINARY_DIR:STATIC=/home/wei/workspace/NetWorkLab/RdtLab/build
+RdtLab_BINARY_DIR:STATIC=/home/wei/workspace/NetWorkLab/RdtLab/build
 
 //Value Computed by CMake
-StopWait_SOURCE_DIR:STATIC=/home/wei/workspace/NetWorkLab/RdtLab
+RdtLab_SOURCE_DIR:STATIC=/home/wei/workspace/NetWorkLab/RdtLab
 
 
 ########################

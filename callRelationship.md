@@ -21,7 +21,6 @@
 ### receive
 1. 通过Ack包是否损毁来接受确认
     - API checksum
-    - API deliver to app
     - slideWindow
     - removePacket
     - API startTimer

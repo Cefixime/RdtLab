@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(StopWait)
+project(RdtLab)
 
 SET(CMAKE_C_COMPTLER GCC)
 set(CMAKE_CXX FLAGS -fexec-charset=GBK)
@@ -9,5 +9,7 @@ FIND_LIBRARY(NETSIM_LIB libnetsim.a ${PROJECT_SOURCE_DIR}/lib)
 LINK_LIBRARIES(${NETSIM_LIB})
 
 aux_source_directory(${PROJECT_SOURCE_DIR}/src/SW STOPWAIT_LIST)
+aux_source_directory(${PROJECT_SOURCE_DIR}/src/GBN GBN_LIST})
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 ADD_EXECUTABLE(stop_wait ${STOPWAIT_LIST})
+add_executable(gbn_Rdt ${GBN_LIST})
