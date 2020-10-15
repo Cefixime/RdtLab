@@ -1,0 +1,37 @@
+[
+{
+  "directory": "/home/wei/workspace/NetWorkLab/RdtLab/build",
+  "command": "/usr/bin/g++-7   -I/home/wei/workspace/NetWorkLab/RdtLab/include  -g   -std=c++11 -o CMakeFiles/stop_wait.dir/src/SW/StopWait.cpp.o -c /home/wei/workspace/NetWorkLab/RdtLab/src/SW/StopWait.cpp",
+  "file": "/home/wei/workspace/NetWorkLab/RdtLab/src/SW/StopWait.cpp"
+},
+{
+  "directory": "/home/wei/workspace/NetWorkLab/RdtLab/build",
+  "command": "/usr/bin/g++-7   -I/home/wei/workspace/NetWorkLab/RdtLab/include  -g   -std=c++11 -o CMakeFiles/stop_wait.dir/src/SW/StopWaitRdtReceiver.cpp.o -c /home/wei/workspace/NetWorkLab/RdtLab/src/SW/StopWaitRdtReceiver.cpp",
+  "file": "/home/wei/workspace/NetWorkLab/RdtLab/src/SW/StopWaitRdtReceiver.cpp"
+},
+{
+  "directory": "/home/wei/workspace/NetWorkLab/RdtLab/build",
+  "command": "/usr/bin/g++-7   -I/home/wei/workspace/NetWorkLab/RdtLab/include  -g   -std=c++11 -o CMakeFiles/stop_wait.dir/src/SW/StopWaitRdtSender.cpp.o -c /home/wei/workspace/NetWorkLab/RdtLab/src/SW/StopWaitRdtSender.cpp",
+  "file": "/home/wei/workspace/NetWorkLab/RdtLab/src/SW/StopWaitRdtSender.cpp"
+},
+{
+  "directory": "/home/wei/workspace/NetWorkLab/RdtLab/build",
+  "command": "/usr/bin/g++-7   -I/home/wei/workspace/NetWorkLab/RdtLab/include  -g   -std=c++11 -o CMakeFiles/gbn.dir/src/GBN/GBMRdtReceiver.cpp.o -c /home/wei/workspace/NetWorkLab/RdtLab/src/GBN/GBMRdtReceiver.cpp",
+  "file": "/home/wei/workspace/NetWorkLab/RdtLab/src/GBN/GBMRdtReceiver.cpp"
+},
+{
+  "directory": "/home/wei/workspace/NetWorkLab/RdtLab/build",
+  "command": "/usr/bin/g++-7   -I/home/wei/workspace/NetWorkLab/RdtLab/include  -g   -std=c++11 -o CMakeFiles/gbn.dir/src/GBN/GBN.cpp.o -c /home/wei/workspace/NetWorkLab/RdtLab/src/GBN/GBN.cpp",
+  "file": "/home/wei/workspace/NetWorkLab/RdtLab/src/GBN/GBN.cpp"
+},
+{
+  "directory": "/home/wei/workspace/NetWorkLab/RdtLab/build",
+  "command": "/usr/bin/g++-7   -I/home/wei/workspace/NetWorkLab/RdtLab/include  -g   -std=c++11 -o CMakeFiles/gbn.dir/src/GBN/GBNRdtReceiver.cpp.o -c /home/wei/workspace/NetWorkLab/RdtLab/src/GBN/GBNRdtReceiver.cpp",
+  "file": "/home/wei/workspace/NetWorkLab/RdtLab/src/GBN/GBNRdtReceiver.cpp"
+},
+{
+  "directory": "/home/wei/workspace/NetWorkLab/RdtLab/build",
+  "command": "/usr/bin/g++-7   -I/home/wei/workspace/NetWorkLab/RdtLab/include  -g   -std=c++11 -o CMakeFiles/gbn.dir/src/GBN/GBNRdtSender.cpp.o -c /home/wei/workspace/NetWorkLab/RdtLab/src/GBN/GBNRdtSender.cpp",
+  "file": "/home/wei/workspace/NetWorkLab/RdtLab/src/GBN/GBNRdtSender.cpp"
+}
+]
