@@ -12,9 +12,9 @@ private:
 
 private:
   shared_ptr<Packet> makePacket(int seqNum); // 制作Ack包
-  void slideWindow(const Packet &ackPkt);    // 滑动窗口
-  int orderMapping(int seqNum);              // 将 “模Length” 的序号转化为相对base的正向偏移
+  void slide(const Packet &ackPkt);          // 滑动窗口
   void removeDataPacket();                   // 将确认了的数据包移除队列
+  void deliverPacket();                      // 交付数据
   void printSlideWindow() const;             // 输出滑动窗口的内容
 public:
   SRRdtReceiver() = default;

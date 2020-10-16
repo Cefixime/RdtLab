@@ -9,8 +9,8 @@ protected:
   int base{0};
   int nextSeqNum{0};
   virtual void printSlideWindow() const = 0;
-  virtual void slideWindow(const Packet &ackPkt) = 0; // 滑动窗口
-  int orderMapping(int seqNum);                       // 将 “模seqLength” 的序号转化为相对base的偏移
+  virtual void slide(const Packet &ackPkt) = 0; // 滑动窗口
+  int orderMapping(int seqNum) const;                 // 将 “模seqLength” 的序号转化为相对base的偏移
   void setSeqLength(int len);
   void setWinSize(int size);
   SlideWindow() = default;

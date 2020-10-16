@@ -22,9 +22,8 @@
 1. 通过Ack包是否损毁来接受确认
     - API checksum
 
-2. 暂存Ack包，通过与base对比能否提交Ack
-    - slideWindow
-    - removeDataPacket
+2. 确认Ack包，通过与base对比能否提交Ack
+    - slide
     - removeAckPacket
     - stopTimer
 
@@ -51,7 +50,7 @@
     - API send to network
 
 4. 暂存数据包，通过与base对比尝试交付数据
-    - slideWindow
+    - slide
     - removeDataPacket
     - API deliver to app
 

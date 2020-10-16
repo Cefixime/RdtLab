@@ -16,11 +16,15 @@ shared_ptr<Packet> SRRdtSender::makePacket(const Message &message) {
   return packet;
 }
 
-void SRRdtSender::slideWindow(const Packet &ackPkt) {
-  int shift = packetWaitingAck.cbegin()->second;
-  base = (base + shift) % seqLength;
-  for (auto &pkt : packetWaitingAck) {
-    pkt.second -= shift;
+void SRRdtSender::slide(const Packet &ackPkt) {
+  if (packetWaitingAck.empty())
+    base = nextSeqNum;
+  else {
+    int shift = packetWaitingAck.cbegin()->second;
+    base = (base + shift) % seqLength;
+    for (auto &pkt : packetWaitingAck) {
+      pkt.second -= shift;
+    }
   }
 }
 
@@ -30,16 +34,16 @@ bool SRRdtSender::send(const Message &message) {
   if (getWaitingState())
     return false;
   auto pkt = makePacket(message);
-  pns->sendToNetworkLayer(RECEIVER, *pkt);
   pUtils->printPacket("发送方发送报文", *pkt);
+  pns->sendToNetworkLayer(RECEIVER, *pkt);
   // 暂存数据包
   packetWaitingAck.push_back(make_pair(pkt, orderMapping(pkt->seqnum)));
-  PacketSort::sort(packetWaitingAck);
+  // PacketSort::sort(packetWaitingAck);
   // 启动单独定时器
   pns->startTimer(SENDER, Configuration::TIME_OUT, pkt->seqnum);
   nextSeqNum = (nextSeqNum + 1) % seqLength;
   printSlideWindow();
-  if (nextSeqNum == base)
+  if (orderMapping(nextSeqNum) == -winSize)
     state = FULL;
   return true;
 }
@@ -47,27 +51,27 @@ bool SRRdtSender::send(const Message &message) {
 void SRRdtSender::receive(const Packet &ackPkt) {
   int checkSum = pUtils->calculateCheckSum(ackPkt);
   int acknum = ackPkt.acknum;
-  auto pred = [this, acknum](pair<shared_ptr<Packet>, int> &pkt) { return pkt.first->seqnum == acknum; };
+  auto pred = [this, acknum](const pair<shared_ptr<Packet>, int> &pkt) { return pkt.first->seqnum == acknum; };
   //如果校验和正确，并且确认序号在base之后, 以及未缓存的Ack(对应暂存的数据包没有清除)会被正确接受
   auto pkt = find_if(packetWaitingAck.cbegin(), packetWaitingAck.cend(), pred);
   if (checkSum == ackPkt.checksum && orderMapping(ackPkt.acknum) >= 0 && pkt != packetWaitingAck.cend()) {
     pUtils->printPacket("发送方正确收到确认", ackPkt);
     pns->stopTimer(SENDER, ackPkt.acknum);
+    // 接受Ack包, 也即去掉相应的数据暂存包
+    packetWaitingAck.erase(pkt);
     if (ackPkt.acknum == base) {
       // 如果是base，则可以滑动窗口了，滑动到第一个未收到Ack的包
-      slideWindow(ackPkt);
-      printSlideWindow();
-    } else {
-      // 否则接受Ack包, 也即去掉相应的数据暂存包
-      packetWaitingAck.erase(pkt);
+      slide(ackPkt);
+      state = TRANSPORT;
     }
+    printSlideWindow();
   }
 }
 
 void SRRdtSender::timeoutHandler(int seqNum) {
+  cout << "######计时器超时 包:" << seqNum << "未收到正确Ack\n";
   pns->stopTimer(SENDER, seqNum);
-  cout << "######计时器超时 包:" << seqNum << "未收到正确Ack";
-  auto pred = [this, seqNum](pair<shared_ptr<Packet>, int> &pkt) { return pkt.first->seqnum == seqNum; };
+  auto pred = [this, seqNum](const pair<shared_ptr<Packet>, int> &pkt) { return pkt.first->seqnum == seqNum; };
   auto pkt = find_if(packetWaitingAck.cbegin(), packetWaitingAck.cend(), pred);
   if (pkt == packetWaitingAck.cend())
     throw runtime_error("no that packet ");
@@ -81,12 +85,14 @@ void SRRdtSender::printSlideWindow() const {
   int index = 0;
   auto it = packetWaitingAck.cbegin();
   auto it_end = packetWaitingAck.cend();
-  while (index < seqLength) {
-    if (it != it_end && it->first->seqnum == index) {
+  while (index < winSize) {
+    if (it != it_end && it->second == index) {
       cout << it->first->seqnum << ' ';
       it++;
-    } else
-      cout << '@ ';
+    } else if (index < orderMapping(nextSeqNum))
+      cout << "+ ";
+    else
+      cout << "@ ";
     index++;
   }
   cout << "}\n";

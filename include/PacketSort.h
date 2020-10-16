@@ -8,12 +8,14 @@ using std::pair;
 using std::shared_ptr;
 using std::vector;
 
-class PacketSort final{
+class PacketSort final {
 private:
   class PacketComp {
+  public:
     bool operator()(pair<shared_ptr<Packet>, int> &pkt1, pair<shared_ptr<Packet>, int> &pkt2);
   };
   static PacketComp comp;
+
 public:
   static void sort(vector<pair<shared_ptr<Packet>, int>> &vec);
   PacketSort() = delete;

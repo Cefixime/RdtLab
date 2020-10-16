@@ -21,3 +21,4 @@ message(STATUS "-- executable output path: " ${EXECUTABLE_OUTPUT_PATH})
 
 add_executable(stop_wait ${SW_SRC})
 add_executable(gbn ${GBN_SRC} ${COMMON})
+add_executable(sr ${SR_SRC} ${COMMON})

@@ -21,7 +21,7 @@ public:
 
 private:
   shared_ptr<Packet> makePacket(const Message &message); // 制作数据包
-  void slideWindow(const Packet &ackPkt) override;     // 滑动窗口
+  void slide(const Packet &ackPkt) override;     // 滑动窗口
   void goBackN();                             // 重发所有已发送，等待Ack的数据包
   void removePacket();                        // 将确认了的数据包移除队列
 

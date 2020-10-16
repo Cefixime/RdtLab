@@ -29,7 +29,7 @@ shared_ptr<Packet> GBNRdtSender::makePacket(const Message &message) {
   return packet;
 }
 
-void GBNRdtSender::slideWindow(const Packet &ackPkt) {
+void GBNRdtSender::slide(const Packet &ackPkt) {
   base = (ackPkt.acknum + 1) % seqLength;
   if (base == nextSeqNum && state != START)
     state = FINISH;
@@ -74,7 +74,7 @@ void GBNRdtSender::receive(const Packet &ackPkt) {
   if (checkSum == ackPkt.checksum && orderMapping(ackPkt.acknum) >= 0) {
     pUtils->printPacket("发送方正确收到确认", ackPkt);
     pns->stopTimer(SENDER, base);
-    slideWindow(ackPkt);
+    slide(ackPkt);
     removePacket();
     printSlideWindow();
     if (state != FINISH)

@@ -16,7 +16,7 @@ private:
 
 private:
   shared_ptr<Packet> makePacket(const Message &message); // 制作数据包
-  void slideWindow(const Packet &ackPkt) override;       // 滑动窗口                                  // 将确认了的数据包移除队列
+  void slide(const Packet &ackPkt) override;       // 滑动窗口                                  // 将确认了的数据包移除队列
 
 public:
   // RdtSender 接口实现
