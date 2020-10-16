@@ -5,23 +5,6 @@
 #include <vector>
 using namespace std;
 
-int GBNRdtSender::orderMapping(int seqNum) {
-  int result = seqNum - base;
-  if (result >= 0 && result <= 3)
-    return result;
-  else if (result > 3)
-    return result - 8;
-  else if (result < -4)
-    return result + seqLength;
-  else if (result < 0 && result >= -4)
-    return result;
-}
-
-void GBNRdtSender::setSeqNum(int len) {
-  seqLength = len;
-  winSize = len / 2;
-}
-
 void GBNRdtSender::printSlideWindow() const {
   cout << "######滑动窗口 [base, nextSeqnum]:";
   cout << '[' << base << ',' << nextSeqNum << "] === { ";
@@ -81,6 +64,7 @@ bool GBNRdtSender::send(const Message &message) {
   printSlideWindow();
   if (nextSeqNum == base)
     state = FULL;
+  return true;
 }
 
 void GBNRdtSender::receive(const Packet &ackPkt) {
