@@ -11,8 +11,12 @@
 
 int main(int argc, char* argv[])
 {
-	RdtSender *ps = new GBNRdtSender();
-	RdtReceiver * pr = new GBNRdtReceiver();
+  auto gbns = new GBNRdtSender();
+  // gbns->setSeqLength(16);
+  // gbns->setWinSize(8);
+	RdtSender *ps = gbns;
+  auto gbnr = new GBNRdtReceiver();
+	RdtReceiver * pr = gbnr;
 	pns->setRunMode(0);  //VERBOS模式
 	// pns->setRunMode(1);  //安静模式
 	pns->init();

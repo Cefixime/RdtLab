@@ -1,13 +1,13 @@
-#include "SRRdtReceiver.h"
+#include "TCPRdtReceiver.h"
 #include "Global.h"
-#include "SlideWindow.h"
 #include "PacketSort.h"
 #include <algorithm>
 #include <memory>
-#include <vector>
 using namespace std;
 
-shared_ptr<Packet> SRRdtReceiver::makePacket(int seqNum) {
+TCPRdtReceiver::TCPRdtReceiver() { lastAckPkt = makePacket(SEQ_LEN - 1); }
+
+shared_ptr<Packet> TCPRdtReceiver::makePacket(int seqNum) {
   shared_ptr<Packet> pkt = make_shared<Packet>();
   pkt->acknum = seqNum;
   pkt->seqnum = -1;
@@ -18,7 +18,7 @@ shared_ptr<Packet> SRRdtReceiver::makePacket(int seqNum) {
   return pkt;
 }
 
-void SRRdtReceiver::slide(const Packet &ackPkt) {
+void TCPRdtReceiver::slide(const Packet &ackPkt) {
   int shift = 1;
   for (auto &pkt : waitingDeliverPkt) {
     if (pkt.second == shift)
@@ -32,13 +32,13 @@ void SRRdtReceiver::slide(const Packet &ackPkt) {
   }
 }
 
-void SRRdtReceiver::removeDataPacket() {
+void TCPRdtReceiver::removeDataPacket() {
   auto pred = [this](const pair<shared_ptr<Packet>, int> &pkt) { return pkt.second < 0; };
   auto it_b = remove_if(waitingDeliverPkt.begin(), waitingDeliverPkt.end(), pred);
   waitingDeliverPkt.erase(it_b, waitingDeliverPkt.end());
 }
 
-void SRRdtReceiver::deliverPacket() {
+void TCPRdtReceiver::deliverPacket() {
   int index = 1;
   for (auto &packet : waitingDeliverPkt) {
     if (packet.second != index)
@@ -50,7 +50,7 @@ void SRRdtReceiver::deliverPacket() {
   }
 }
 
-void SRRdtReceiver::printSlideWindow() const {
+void TCPRdtReceiver::printSlideWindow() const {
   cout << "######滑动窗口 [base]:";
   cout << '[' << base << "] === { ";
   int index = 0;
@@ -67,28 +67,32 @@ void SRRdtReceiver::printSlideWindow() const {
   cout << "}\n";
 }
 
-void SRRdtReceiver::receive(const Packet &packet) {
+void TCPRdtReceiver::receive(const Packet &packet) {
   int checkSum = pUtils->calculateCheckSum(packet);
   if (checkSum == packet.checksum) {
-    auto ackPkt = makePacket(packet.seqnum);
     int seqNum = packet.seqnum;
     auto pred = [this, seqNum](const pair<shared_ptr<Packet>, int> &pkt) { return pkt.first->seqnum == seqNum; };
     auto pkt = find_if(waitingDeliverPkt.cbegin(), waitingDeliverPkt.cend(), pred);
     if (orderMapping(seqNum) >= 0 && pkt == waitingDeliverPkt.cend()) {
-      pUtils->printPacket("接收方正确收到发送方的报文", packet);
-      pUtils->printPacket("接收方发送确认报文", *ackPkt);
-      //调用模拟网络环境的sendToNetworkLayer，通过网络层发送确认报文到对方
-      pns->sendToNetworkLayer(SENDER, *ackPkt);
       if (seqNum == base) {
+        pUtils->printPacket("接收方正确收到发送方的报文", packet);
         // 取出Message，向上递交给应用层
         Message msg;
         memcpy(msg.data, packet.payload, sizeof(packet.payload));
         pns->delivertoAppLayer(RECEIVER, msg);
         deliverPacket(); // 交付暂存的其他可交付数据
         slide(packet);   // 滑动窗口
+        int ackSeqNum = base - 1 >= 0 ? base - 1 : seqLength - 1;
+        lastAckPkt = makePacket(ackSeqNum);
+        pUtils->printPacket("接收方发送确认报文", *lastAckPkt);
+        pns->sendToNetworkLayer(SENDER, *lastAckPkt);
         removeDataPacket();
       } else {
         // 暂存失序的数据包
+        pUtils->printPacket("暂存失序的报文", packet);
+        pUtils->printPacket("接收方重新发送上一个确认报文", *lastAckPkt);
+        pns->sendToNetworkLayer(SENDER,
+                                *lastAckPkt); //调用模拟网络环境的sendToNetworkLayer，通过网络层发送上次的确认报文
         auto dataPkt = make_shared<Packet>(packet);
         waitingDeliverPkt.push_back(make_pair(dataPkt, orderMapping(dataPkt->seqnum)));
         PacketSort::sort(waitingDeliverPkt);
@@ -96,8 +100,8 @@ void SRRdtReceiver::receive(const Packet &packet) {
       printSlideWindow(); // 显示当前的窗口
     } else {
       pUtils->printPacket("接收方没有正确收到发送方的报文,报文序号不对", packet);
-      pUtils->printPacket("接收方重新发送该确认报文", *ackPkt);
-      pns->sendToNetworkLayer(SENDER, *ackPkt); //调用模拟网络环境的sendToNetworkLayer，通过网络层发送上次的确认报文
+      pUtils->printPacket("接收方重新发送上一个确认报文", *lastAckPkt);
+      pns->sendToNetworkLayer(SENDER, *lastAckPkt); //调用模拟网络环境的sendToNetworkLayer，通过网络层发送上次的确认报文
     }
   } else {
     pUtils->printPacket("接收方没有正确收到发送方的报文,数据校验错误", packet);
