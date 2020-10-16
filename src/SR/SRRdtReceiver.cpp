@@ -1,5 +1,6 @@
 #include "SRRdtReceiver.h"
 #include "Global.h"
+#include "SlideWindow.h"
 #include "PacketSort.h"
 #include <algorithm>
 #include <memory>
@@ -74,6 +75,9 @@ void SRRdtReceiver::receive(const Packet &packet) {
     auto pkt = find_if(waitingDeliverPkt.cbegin(), waitingDeliverPkt.cend(), pred);
     if (orderMapping(seqNum) >= 0 && pkt == waitingDeliverPkt.cend()) {
       pUtils->printPacket("接收方正确收到发送方的报文", packet);
+      pUtils->printPacket("接收方发送确认报文", *ackPkt);
+      //调用模拟网络环境的sendToNetworkLayer，通过网络层发送确认报文到对方
+      pns->sendToNetworkLayer(SENDER, *ackPkt);
       if (seqNum == base) {
         // 取出Message，向上递交给应用层
         Message msg;
@@ -89,9 +93,6 @@ void SRRdtReceiver::receive(const Packet &packet) {
         PacketSort::sort(waitingDeliverPkt);
       }
       printSlideWindow(); // 显示当前的窗口
-      pUtils->printPacket("接收方发送确认报文", *ackPkt);
-      //调用模拟网络环境的sendToNetworkLayer，通过网络层发送确认报文到对方
-      pns->sendToNetworkLayer(SENDER, *ackPkt);
     } else {
       pUtils->printPacket("接收方没有正确收到发送方的报文,报文序号不对", packet);
       pUtils->printPacket("接收方重新发送该确认报文", *ackPkt);

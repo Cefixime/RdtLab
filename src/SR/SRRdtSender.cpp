@@ -36,11 +36,10 @@ bool SRRdtSender::send(const Message &message) {
   auto pkt = makePacket(message);
   pUtils->printPacket("发送方发送报文", *pkt);
   pns->sendToNetworkLayer(RECEIVER, *pkt);
+  pns->startTimer(SENDER, Configuration::TIME_OUT, pkt->seqnum);
   // 暂存数据包
   packetWaitingAck.push_back(make_pair(pkt, orderMapping(pkt->seqnum)));
-  // PacketSort::sort(packetWaitingAck);
   // 启动单独定时器
-  pns->startTimer(SENDER, Configuration::TIME_OUT, pkt->seqnum);
   nextSeqNum = (nextSeqNum + 1) % seqLength;
   printSlideWindow();
   if (orderMapping(nextSeqNum) == -winSize)
@@ -55,8 +54,8 @@ void SRRdtSender::receive(const Packet &ackPkt) {
   //如果校验和正确，并且确认序号在base之后, 以及未缓存的Ack(对应暂存的数据包没有清除)会被正确接受
   auto pkt = find_if(packetWaitingAck.cbegin(), packetWaitingAck.cend(), pred);
   if (checkSum == ackPkt.checksum && orderMapping(ackPkt.acknum) >= 0 && pkt != packetWaitingAck.cend()) {
-    pUtils->printPacket("发送方正确收到确认", ackPkt);
     pns->stopTimer(SENDER, ackPkt.acknum);
+    pUtils->printPacket("发送方正确收到确认", ackPkt);
     // 接受Ack包, 也即去掉相应的数据暂存包
     packetWaitingAck.erase(pkt);
     if (ackPkt.acknum == base) {

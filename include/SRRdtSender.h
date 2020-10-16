@@ -4,7 +4,6 @@
 #include "SlideWindow.h"
 #include <memory>
 #include <vector>
-#define SEQ_LEN 8
 using std::pair;
 using std::shared_ptr;
 using std::vector;

@@ -1,10 +1,11 @@
 #include "GBNRdtReceiver.h"
 #include "Global.h"
+#include "SlideWindow.h"
 #include <memory>
 using namespace std;
 
 GBNRdtReceiver::GBNRdtReceiver() : expectSequenceNumberRcvd(0), seqLen(SEQ_LEN) {
-  lastAckPkt = makePacket(7);
+  lastAckPkt = makePacket(SEQ_LEN - 1);
 }
 
 shared_ptr<Packet> GBNRdtReceiver::makePacket(int seqNum) {

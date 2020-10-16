@@ -2,7 +2,6 @@
 #define GBN_RECEIVER_H
 #include "RdtReceiver.h"
 #include <memory>
-#define SEQ_LEN 8
 using std::shared_ptr;
 class GBNRdtReceiver : public RdtReceiver {
 private:
