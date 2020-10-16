@@ -51,7 +51,7 @@ void SRRdtReceiver::deliverPacket() {
 }
 
 void SRRdtReceiver::printSlideWindow() const {
-  cout << "######滑动窗口 [base]:";
+  cout << "######接受方滑动窗口 [base]:";
   cout << '[' << base << "] === { ";
   int index = 0;
   auto it = waitingDeliverPkt.cbegin();

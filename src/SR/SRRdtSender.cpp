@@ -79,7 +79,7 @@ void SRRdtSender::timeoutHandler(int seqNum) {
 }
 
 void SRRdtSender::printSlideWindow() const {
-  cout << "######滑动窗口 [base, nextSeqnum]:";
+  cout << "######发送方滑动窗口 [base, nextSeqnum]:";
   cout << '[' << base << ',' << nextSeqNum << "] === { ";
   int index = 0;
   auto it = packetWaitingAck.cbegin();

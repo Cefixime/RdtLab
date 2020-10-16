@@ -7,7 +7,7 @@
 using namespace std;
 
 void GBNRdtSender::printSlideWindow() const {
-  cout << "######滑动窗口 [base, nextSeqnum]:";
+  cout << "######发送方滑动窗口 [base, nextSeqnum]:";
   cout << '[' << base << ',' << nextSeqNum << "] === { ";
   int count = 0;
   for (auto &pkt : packetWaitingAck) {
